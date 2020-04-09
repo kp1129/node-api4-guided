@@ -7,7 +7,10 @@ const router = express.Router();
 router.use(express.json());
 
 router.get("/", (req, res) => {
-  res.status(200).json({ api: "up" });
+  // read the message from environment
+  const message = process.env.MESSAGE || 'hello from localhost';
+  // return the message as part of the response
+  res.status(200).json({ api: "up", message });
 });
 
 router.get("/shouts", (req, res, next) => {
